@@ -1,0 +1,210 @@
+/* Define all areas in the document that will be using flex */
+body, 
+section, 
+#contact article, 
+#contact-form form,
+#contact-links ul,
+.form-head-container {
+    display: flex;
+}
+
+/* Set all the parts of the document that will distribute items vertically */
+body, 
+#contact article, 
+#contact-form form {
+    flex-direction: column;
+}
+
+/* Ensure the body takes up all available vertical space */
+body {
+    min-height: 100vh;
+}
+
+/* Clamp the width of the header and main content areas to prevent the layout from becoming too weird in high-resolution layouts */
+header, main {
+    max-width: 1200px;
+    min-width: 300px;
+}
+
+/* Apply centering along the axis, and create gutters with viewport-relative margins. The right is favoured to make room for the floating nav menu */
+body > * {
+    align-self: center;
+    margin-left: 5vw;
+    margin-right: 10vw;
+}
+
+/* Remove the nav menu from document flow and place to the top right */
+nav {
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+/* Configure sections to be relative for the absolute positioning of certain elements, and allow wrapping */
+section {
+    position: relative;
+    flex-wrap: wrap;
+    margin: 2em 0 1.5em 0;
+    padding-top: 1em;
+}
+
+/* Position section headers above and in the middle of their respective parents */
+section h2 {
+    position: absolute;
+    top: -1em;
+    left: 50%;
+    translate: -50%;
+    text-align: center;
+}
+
+/* Introduce a little breathing room for the articles themselves vertically */
+article {
+    margin-bottom: 1em;
+}
+
+/* Set specific padding away from the image on the left */
+#about {
+    padding-left: 150px;
+}
+
+/* Set the rough shape and size of the profile image for positioning purposes */
+#about img {
+    position: absolute;
+    left: -2.5vw;
+    top: 10%;
+    width: 150px;
+    border-radius: 100%;
+}
+
+/* Adding spaces for paragraphs in the About section, nowhere else really needs this for now */
+#about p {
+    margin-bottom: 1em;
+}
+
+/* Define articles and base widths */
+#projects article {
+    position: relative;
+    flex-basis: 25%;
+}
+
+/* Make the first article take up more space than the rest by giving it a larger basis, and giving it a growth factor of 2 */
+#projects article:first-of-type {
+    flex-basis: 40%;
+    flex-grow: 2;
+}
+
+/* Remove the info cards from the document flow */
+#projects div {
+    position: absolute;
+}
+
+/* Centre all child items of the contact section */
+#contact {
+    justify-content: center;
+}
+
+/* Size the contents of the sections and link cards to take up roughly 45% of their parents respectively */
+#contact article, #contact-links ul > li {
+    flex-basis: 45%;
+    flex-wrap: wrap;
+}
+
+/* Adding some small separation between form elements */
+#contact-form label {
+    margin-top: 0.25em;
+}
+
+/* The submit button gets some more space so it doesn't look like it's squished in */
+#contact-form input[type="submit"] {
+    padding: 0.25em 0;
+    margin-top: 0.75em;
+}
+
+/* Space out the message header and required note to opposite ends */
+.form-head-container {
+    justify-content: space-between;
+}
+
+/* Breakpoint for common tablet widths */
+@media screen and (max-width: 768px)  {
+
+    /* Change the way project cards position themselves once forced to wrap */
+    #projects {
+        justify-content: space-around;
+    }
+
+    /* Increase the basis of the first card so it takes up most horizontal space, this will push the other cards down */
+    #projects article:first-of-type {
+        flex-basis: 80%;
+    }
+
+    /* Force the contact articles to occupy a single line */
+    #contact article {
+        flex-basis: 70%;
+        flex-wrap: wrap;
+    }
+}
+
+/* Breakpoint for mobile widths */
+@media screen and (max-width: 550px) {
+    /* Apply small margins to the sides, but not enough for the menu (We're moving it) */
+    body > * {
+        margin: 0 1em;
+    }
+
+    /* Make the header relative so we can make adjustments to the nav menu */
+    header{
+        position: relative;
+    }
+
+    /* Force the nav bar to the left, and occupy all available horizontal space */
+    nav {
+        left: 0;
+        width: 100%;
+    }
+
+    /* Set the nav menu to a flex container and space out elements across the top */
+    nav ul {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    /* Make the list inline so they can be spread across instead */
+    nav li {
+        display: inline;
+    }
+
+    /* Add some extra space above the main heading to compensate for the relocation of the menu */
+    h1 {
+        margin-top: 1.5em;
+    }
+
+    /* Force all items to the centre and remove the padding that would otherwise apply to space out the portrait */
+    #about  {
+        padding-left: 0px;
+        justify-content: center;
+    }
+
+    /* Remove absolute positioning and offsets so the portrait returns to flow, then add a small space between it and the rest of the content */
+    #about img {
+        position: relative;
+        left: unset;
+        top: unset;
+        margin-bottom: 0.5em;
+    }
+
+    /* Make all project cards move to the centre */
+    #projects {
+        justify-content: center;
+    }
+
+    /* Male all project cards occupy the maximum width */
+    #projects article {
+        flex-basis: 100%;
+    }
+
+    /* Can't test without a screenshot yet, but this should make the card taller than the rest */
+    #projects article:first-of-type {
+        height: 150%;
+    }
+}
