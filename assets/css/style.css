@@ -36,12 +36,36 @@ nav {
 section {
     position: relative;
     flex-wrap: wrap;
+    margin-bottom: 1.5em;
+}
+
+/* Set specific padding away from the image on the left */
+#about {
+    padding-left: 150px;
 }
 
 /* Set the rough shape and size of the profile image for positioning purposes */
 #about img {
     position: absolute;
-    left: 0;
+    left: -2.5vw;
+    top: 10%;
     width: 150px;
     border-radius: 100%;
+}
+
+/* Define articles and base widths */
+#projects article {
+    position: relative;
+    flex-basis: 25%;
+}
+
+/* Make the first article take up more space than the rest by giving it a larger basis, and giving it a growth factor of 2 */
+#projects article:first-of-type {
+    flex-basis: 40%;
+    flex-grow: 2;
+}
+
+/* Remove the info cards from the document flow */
+#projects div {
+    position: absolute;
 }
