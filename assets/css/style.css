@@ -1,5 +1,19 @@
+/* Pallette definitions */
+:root {
+    --section-bg: #D9D9D9;
+    --accent-bg-about: #3347FF;
+    --accent-bg-projects: #820097;
+    --accent-bg-contact: #00970F;
+    --accent-bg-neutral: #3C3C3C;
+    --accent-fg: #FFF;
+    --shadow: #0000003A;
+}
+
+/* ### Start of Layout CSS ### */
+
 /* Define all areas in the document that will be using flex */
 body, 
+header,
 section, 
 #contact article, 
 #contact-form form,
@@ -10,6 +24,7 @@ section,
 
 /* Set all the parts of the document that will distribute items vertically */
 body, 
+header,
 #contact article, 
 #contact-form form {
     flex-direction: column;
@@ -20,17 +35,28 @@ body {
     min-height: 100vh;
 }
 
+/* Apply centering along the axis, and create gutters with viewport-relative margins. The right is favoured to make room for the floating nav menu */
+body > * {
+    align-self: center;
+    margin-left: 5vw;
+    margin-right: 10vw;
+}
+
 /* Clamp the width of the header and main content areas to prevent the layout from becoming too weird in high-resolution layouts */
 header, main {
     max-width: 1200px;
     min-width: 300px;
 }
 
-/* Apply centering along the axis, and create gutters with viewport-relative margins. The right is favoured to make room for the floating nav menu */
-body > * {
-    align-self: center;
-    margin-left: 5vw;
-    margin-right: 10vw;
+/* Enforce centering on the header */
+header {
+    align-items: center;
+}
+
+/* Override paragraph styling to give it a slight indent under the header */
+header p {
+    align-self: flex-start;
+    margin-left: 2.5em;
 }
 
 /* Remove the nav menu from document flow and place to the top right */
@@ -45,7 +71,7 @@ section {
     position: relative;
     flex-wrap: wrap;
     margin: 2em 0 1.5em 0;
-    padding-top: 1em;
+    padding: 1.5em 1em;
 }
 
 /* Position section headers above and in the middle of their respective parents */
@@ -64,14 +90,14 @@ article {
 
 /* Set specific padding away from the image on the left */
 #about {
-    padding-left: 150px;
+    padding-left: 200px;
 }
 
 /* Set the rough shape and size of the profile image for positioning purposes */
 #about img {
     position: absolute;
-    left: -2.5vw;
-    top: 10%;
+    left: 1.5em;
+    top: 1.5em;
     width: 150px;
     border-radius: 100%;
 }
@@ -81,16 +107,25 @@ article {
     margin-bottom: 1em;
 }
 
+/* Enforce some spacing but with a little less padding so project cards have more space to work with */
+#projects {
+    justify-content: space-between;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
 /* Define articles and base widths */
 #projects article {
     position: relative;
-    flex-basis: 25%;
+    flex-basis: 20%;
+    margin: 1em 0.5em;
+    flex-shrink: 1;
+    flex-grow: 1;
 }
 
-/* Make the first article take up more space than the rest by giving it a larger basis, and giving it a growth factor of 2 */
+/* Make the first article take up more space than the rest */
 #projects article:first-of-type {
-    flex-basis: 40%;
-    flex-grow: 2;
+    flex-basis: 30%;
 }
 
 /* Remove the info cards from the document flow */
@@ -208,3 +243,103 @@ article {
         height: 150%;
     }
 }
+
+/* ### End of Layout CSS ### */
+/* ### Start of Box Styling CSS ### */
+
+nav li {
+    margin: 0.5em 0;
+    border-radius: 20px 0 0 20px;
+}
+
+nav a {
+    font-size: 14pt;
+    font-weight: 500;
+    padding: 1em 0.5em 1em 1.5em;
+    border-radius: 20px 0 0 20px;
+}
+
+/* Base styles for sections */
+section {
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 4px 0 0 0;
+    background-color: var(--section-bg);
+}
+
+/* Base style for section headers */
+section h2 {
+    border-radius: 50px;
+    padding: 0.1em 4em;
+    color: var(--accent-fg);
+    background-color: var(--accent-bg-neutral);
+}
+
+li {
+    list-style: none;
+    background-color: var(--accent-bg-neutral);
+}
+
+li a {
+    color: var(--accent-fg);
+    text-decoration: none;
+}
+
+#about {
+    border-color: var(--accent-bg-about)
+}
+
+#nav-about, 
+#about h2 {
+    background-color: var(--accent-bg-about);
+}
+
+#projects {
+    border-color: var(--accent-bg-projects);
+}
+
+#nav-projects, 
+#projects h2, 
+#projects div {
+    background-color: var(--accent-bg-projects);
+}
+
+#projects img {
+    position: relative;
+    filter: blur(2px);
+    z-index: 1;
+    border-radius: 10px;
+    max-width: 100%;
+}
+
+#projects div {
+    z-index: 2;
+    top: 2em;
+    left: -0.5em;
+    padding: 0.25em 0.75em 0.75em 0.75em;
+    color: var(--accent-fg);
+    box-shadow: 0.2em 0.2em 0.1em var(--shadow);
+    border-radius: 0 20px 20px 20px;
+}
+
+#contact {
+    border-color: var(--accent-bg-contact);
+}
+
+#nav-contact,
+#contact h2 {
+    background-color: var(--accent-bg-contact);
+}
+
+/* ### End of Box Layout CSS ### */
+/* ### Start of Typographic CSS ### */
+
+header p {
+    font-style: italic;
+}
+
+#projects p {
+    font-size: 11pt;
+}
+
+/* ### End of Typographic CSS */
