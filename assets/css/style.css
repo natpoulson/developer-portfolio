@@ -2,14 +2,16 @@
 body, 
 section, 
 #contact article, 
-#contact-form {
+#contact-form form,
+#contact-links ul,
+.form-head-container {
     display: flex;
 }
 
 /* Set all the parts of the document that will distribute items vertically */
 body, 
 #contact article, 
-#contact-form {
+#contact-form form {
     flex-direction: column;
 }
 
@@ -36,7 +38,16 @@ nav {
 section {
     position: relative;
     flex-wrap: wrap;
-    margin-bottom: 1.5em;
+    margin: 2em 0 1.5em 0;
+    padding-top: 1em;
+}
+
+/* Position section headers above and in the middle of their respective parents */
+section h2 {
+    position: absolute;
+    top: -1em;
+    left: 45%;
+    text-align: center;
 }
 
 /* Set specific padding away from the image on the left */
@@ -51,6 +62,11 @@ section {
     top: 10%;
     width: 150px;
     border-radius: 100%;
+}
+
+/* Adding spaces for paragraphs in the About section, nowhere else really needs this for now */
+#about p {
+    margin-bottom: 1em;
 }
 
 /* Define articles and base widths */
@@ -68,4 +84,20 @@ section {
 /* Remove the info cards from the document flow */
 #projects div {
     position: absolute;
+}
+
+/* Centre all child items of the contact section */
+#contact {
+    justify-content: center;
+}
+
+/* Size the contents of the sections and link cards to take up roughly 45% of their parents respectively */
+#contact article, #contact-links ul > li {
+    flex-basis: 45%;
+    flex-wrap: wrap;
+}
+
+/* Space out the message header and required note to opposite ends */
+.form-head-container {
+    justify-content: space-between;
 }
