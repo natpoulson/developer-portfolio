@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home :: Developer Profile of Nat Poulson</title>
+    <link rel="stylesheet" type="text/css" href="./assets/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/fa/css/brands.min.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/fa/css/regular.min.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+</head>
+<body>
+    <header>
+        <h1>Developer Profile</h1>
+        <p>of Nat Poulson</p>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="about">
+            <h2>About</h2>
+            <figure><img src="https://avatars.githubusercontent.com/u/97604337?v=4" alt="Nat Poulson's Avatar from GitHub"></figure>
+            <p>Nat is a born-and-raised resident of the Northern Rivers region, who has provided IT support for businesses for 10 years. Versed in various languages as part of his work, Nat is moderately proficient in C#, PowerShell, HTML, CSS, and JavaScript. A spread of skills picked up over his years of work solving bespoke technival issues and writing custom solutions to meet customer needs. Setting his sights to pursue his lifelong passion of becoming a programmer proper, Nat is currently undertaking an intensive 6-month coding bootcamp to hone his techique and open the door to web app development, aiming to become skilled enough to create more robust tools that will not only improve the efficiency of his coworkers and himself, but to also enable him to delve deeper into debugging or creating web apps for the ever-changing needs of his clients.</p>
+            <p>When he isn't working or coding, Nat is often relaxing with various video games, delving into Virtual Reality, and learning to do 3D modelling.</p>
+        </section>
+        <section id="projects">
+            <h2>Projects</h2>
+            <article>
+                <div>
+                    <h3>Landing Page</h3>
+                    <p>A simple single-page website to demonstrate HTML and CSS in action</p>
+                </div>
+                <a href="https://natpoulson.github.io/project-01-landing-page" target="_blank" rel="noopener noreferrer"><img src="./assets/img/preview-scr-01.png" alt="A preview screenshot of a landing page with pseudo-futuristic shapes in a mixture of red with yellow outlines and white text. It features a 'coming soon' image and a simple webform."></a>
+            </article>
+            <article>
+                <div>
+                    <h3>Accessibility Refactor</h3>
+                    <p>A sample page that required amendments to the HTML and CSS to improve accessibility</p>
+                </div>
+                <a href="https://natpoulson.github.io/accessibility-refactor" target="_blank" rel="noopener noreferrer"><img src="./assets/img/preview-scr-02.png" alt="A preview screenshot showing a webpage sporting a decorative banner, three sections of content with images nect to them, and an aside with three articles, each with a simple black graphic on a rounded white backdrop."></a>
+            </article>
+            <article>
+                <div>
+                    <h3>CSS Cheatsheet</h3>
+                    <p>A quick reference page featuring several code snippets, demonstrating advanced CSS features</p>
+                </div>
+                <a href="https://natpoulson.github.io/css-cheatsheet" target="_blank" rel="noopener noreferrer"><img src="./assets/img/preview-scr-03.png" alt="A preview screenshot showing a webpage featuring a series of boxes containing CSS code snippets, and descriptions as to what they achieve."></a>
+            </article>
+        </section>
+        <section id="contact">
+            <h2>Contact</h2>
+            <article>
+                <h3>Links</h3>
+                <ul id="contact-links">
+                    <li>
+                        <a href="https://github.com/natpoulson" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-brands fa-github"></i>
+                            <h4>GitHub</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-brands fa-linkedin"></i>
+                            <h4>LinkedIn</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-regular fa-face-smile"></i>
+                            <h4>Website</h4>
+                        </a>
+                    </li>
+                </ul>
+                <form id="contact-form" action="#">
+                    <div class="form-head-container">
+                        <h3>Send a message</h3>
+                        <span>Required</span>
+                    </div>
+                    <label for="form-name">Name *</label><input type="text" name="name" id="form-name" required="true">
+                    <label for="form-email">Email *</label><input type="email" name="email" id="form-email" required="true">
+                    <label for="form-subject">Subject *</label><input type="text" name="subject" id="form-subject" required="true">
+                    <label for="form-message">Message</label><textarea name="message" id="form-message" cols="30" rows="10"></textarea>
+                    <input type="submit" title="Send"></form>
+            </article>
+        </section>
+    </main>
+</body>
+</html>
