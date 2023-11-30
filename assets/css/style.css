@@ -217,9 +217,21 @@ li a {
     border-color: var(--accent-bg-about)
 }
 
+#nav-about,
+#nav-projects,
+#nav-contact,
+#contact-links li {
+    transition-property: background-color;
+    transition-duration: 0.3s;
+}
+
 #nav-about, 
 #about h2 {
     background-color: var(--accent-bg-about);
+}
+
+#nav-about:hover {
+    background-color: var(--accent-bg-about-hover);
 }
 
 #projects {
@@ -230,6 +242,10 @@ li a {
 #projects h2, 
 #projects div {
     background-color: var(--accent-bg-projects);
+}
+
+#nav-projects:hover {
+    background-color: var(--accent-bg-projects-hover);
 }
 
 #projects img {
@@ -263,6 +279,11 @@ li a {
 #contact h2,
 #contact-links li {
     background-color: var(--accent-bg-contact);
+}
+
+#nav-contact:hover,
+#contact-links li:hover {
+    background-color: var(--accent-bg-contact-hover);
 }
 
 #contact-links li {
