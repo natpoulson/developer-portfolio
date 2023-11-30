@@ -83,11 +83,11 @@
                 <form action="#">
                     <div class="form-head-container">
                         <h3>Send a message</h3>
-                        <span>Required</span>
+                        <span><span class="required">*</span> Required</span>
                     </div>
-                    <label for="form-name">Name *</label><input type="text" name="name" id="form-name" required="true">
-                    <label for="form-email">Email *</label><input type="email" name="email" id="form-email" required="true">
-                    <label for="form-subject">Subject *</label><input type="text" name="subject" id="form-subject" required="true">
+                    <label for="form-name">Name <span class="required">*</span></label><input type="text" name="name" id="form-name" required="true">
+                    <label for="form-email">Email <span class="required">*</span></label><input type="email" name="email" id="form-email" required="true">
+                    <label for="form-subject">Subject <span class="required">*</span></label><input type="text" name="subject" id="form-subject" required="true">
                     <label for="form-message">Message</label><textarea name="message" id="form-message" cols="30" rows="5"></textarea>
                     <input type="submit" title="Send">
                 </form>

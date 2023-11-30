@@ -3,8 +3,11 @@
     --section-bg: #D9D9D9;
     --accent-bg-about: #3347FF;
     --accent-bg-projects: #820097;
-    --accent-bg-contact: #00970F;
+    --accent-bg-contact: #00830d;
     --accent-bg-neutral: #3C3C3C;
+    --accent-bg-about-hover: hsl(234, 100%, 50%);
+    --accent-bg-projects-hover: hsl(292, 100%, 20%);
+    --accent-bg-contact-hover: hsl(126, 100%, 16%);
     --accent-fg: #FFF;
     --shadow: #0000003A;
 }
@@ -64,6 +67,7 @@ nav {
     position: fixed;
     right: 0;
     top: 0;
+    z-index: 2;
 }
 
 /* Configure sections to be relative for the absolute positioning of certain elements, and allow wrapping */
@@ -139,13 +143,13 @@ article {
     z-index: 0
 }
 
-/* Centre all child items of the contact section */
 #contact {
-    justify-content: center;
+    justify-content: space-around;
 }
 
 /* Size the contents of the sections and link cards to take up roughly 45% of their parents respectively */
-#contact article, #contact-links ul > li {
+#contact article, 
+#contact-links ul > li {
     flex-basis: 45%;
     flex-wrap: wrap;
 }
@@ -170,14 +174,17 @@ article {
 /* ### Start of Box Styling CSS ### */
 
 nav li {
-    margin: 0.5em 0;
+    margin: 1em 0;
     border-radius: 20px 0 0 20px;
+    padding: 0.5em 0 0.5em 1em;
+    text-align: right;
 }
 
 nav a {
     font-size: 14pt;
     font-weight: 500;
-    padding: 1em 0.5em 1em 1.5em;
+    min-width: 100%;
+    padding: 0.5em 1em 0.5em 1em;
 }
 
 /* Base styles for sections */
@@ -226,9 +233,16 @@ li a {
 }
 
 #projects img {
-    filter: blur(2px);
+    transition-property: filter;
+    transition-duration: 0.3s;
+    filter: blur(4px);
     z-index: 1;
     border-radius: 10px;
+    box-shadow: 1px 1px 3px 1px var(--shadow);
+}
+
+#projects img:hover {
+    filter: unset;
 }
 
 #projects div {
@@ -246,8 +260,34 @@ li a {
 }
 
 #nav-contact,
-#contact h2 {
+#contact h2,
+#contact-links li {
     background-color: var(--accent-bg-contact);
+}
+
+#contact-links li {
+    border-radius: 0px 20px 20px 20px;
+    box-shadow: 1px 1px 3px 0 var(--shadow);
+    margin: 0 0.5em;
+}
+
+#contact-links a {
+    display: flex;
+    margin: 0.75em;
+    gap: 0 5px;
+}
+
+#contact-links a > * {
+    flex: 1 0 25%;
+}
+
+#contact-links i:before {
+    font-size: 300%
+}
+
+#contact-links a h4 {
+    justify-self: end;
+    align-self: center;
 }
 
 /* ### End of Box Layout CSS ### */
@@ -261,7 +301,75 @@ header p {
     font-size: 11pt;
 }
 
+.required {
+    color: #D44;
+    font-weight: bolder;
+}
+
 /* ### End of Typographic CSS */
+
+@media screen and (max-width: 1100px) {
+    /* Apply small margins to the sides, but not enough for the menu (We're moving it) */
+    body > * {
+        margin: 0 1em;
+    }
+
+    /* Make the header relative so we can make adjustments to the nav menu */
+    header{
+        position: relative;
+    }
+
+    /* Force the nav bar to the left, and occupy all available horizontal space */
+    nav {
+        left: 0;
+        width: 100%;
+    }
+
+    /* Set the nav menu to a flex container and space out elements across the top */
+    nav ul {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    /* Make the list inline so they can be spread across instead */
+    nav li {
+        display: inline;
+        border-radius: 0 0 20px 20px;
+        text-align: center;
+        padding: 0.5em 1em;
+        margin-top: 0;
+    }
+
+    nav a {
+        min-width: 100%;
+    }
+
+    /* Add some extra space above the main heading to compensate for the relocation of the menu */
+    h1 {
+        margin-top: 1.5em;
+    }
+
+}
+
+/* Breakpoint for common tablet widths */
+@media screen and (max-width: 768px)  {
+
+    /* Change the way project cards position themselves once forced to wrap */
+    #projects {
+        justify-content: space-around;
+    }
+
+    /* Increase the basis of the first card so it takes up most horizontal space, this will push the other cards down */
+    #projects article:first-of-type {
+        flex-basis: 80%;
+    }
+
+    /* Force the contact articles to occupy a single line */
+    #contact article {
+        flex-basis: 50%;
+        flex-wrap: wrap;
+    }
+}
 
 /* Breakpoint for mobile widths */
 @media screen and (max-width: 550px) {
@@ -293,61 +401,5 @@ header p {
     /* Can't test without a screenshot yet, but this should make the card taller than the rest */
     #projects article:first-of-type {
         height: 150%;
-    }
-}
-
-/* Breakpoint for common tablet widths */
-@media screen and (max-width: 768px)  {
-    /* Apply small margins to the sides, but not enough for the menu (We're moving it) */
-    body > * {
-        margin: 0 1em;
-    }
-
-    nav a {
-        padding: 1em 1.5em;
-    }    
-
-    /* Make the header relative so we can make adjustments to the nav menu */
-    header{
-        position: relative;
-    }
-
-    /* Force the nav bar to the left, and occupy all available horizontal space */
-    nav {
-        left: 0;
-        width: 100%;
-    }
-
-    /* Set the nav menu to a flex container and space out elements across the top */
-    nav ul {
-        display: flex;
-        justify-content: space-evenly;
-    }
-
-    /* Make the list inline so they can be spread across instead */
-    nav li {
-        display: inline;
-        border-radius: 20px;
-    }
-
-    /* Add some extra space above the main heading to compensate for the relocation of the menu */
-    h1 {
-        margin-top: 1.5em;
-    }
-
-    /* Change the way project cards position themselves once forced to wrap */
-    #projects {
-        justify-content: space-around;
-    }
-
-    /* Increase the basis of the first card so it takes up most horizontal space, this will push the other cards down */
-    #projects article:first-of-type {
-        flex-basis: 80%;
-    }
-
-    /* Force the contact articles to occupy a single line */
-    #contact article {
-        flex-basis: 70%;
-        flex-wrap: wrap;
     }
 }
